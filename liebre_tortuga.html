@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrera Liebre vs Tortuga</title>
+</head>
+<body>
+    <script>
+        class Dado{
+            lanzar(){
+                return Math.floor(Math.random()*100 + 1)
+            }
+        }
+        class Corredor{
+            constructor(numero) {
+                this.numero= numero;
+                this.posicion=0;
+                this.midado=new Dado();
+                
+            }
+            correrTortuga(){
+            let avanza;
+                if (this.midado.lanzar()<=50){
+                    avanza= 3;
+                }
+                else if (this.midado.lanzar()<=80){
+                    avanza= 1;
+                }
+                else if (this.midado.lanzar()<=100){
+                    avanza= -6;
+                }
+                return this.posicion += avanza;
+            }
+            correrLiebre(){
+            let avanza;
+                if (this.midado.lanzar()<=20){
+                    avanza= 0;
+                }
+                else if (this.midado.lanzar()<=40){
+                    avanza= 9;
+                }
+                else if (this.midado.lanzar()<=50){
+                    avanza= -12;
+                }
+                else if (this.midado.lanzar()<=85){
+                    avanza= 1;
+                }
+                else if (this.midado.lanzar()<=100){
+                    avanza= -2;
+                }
+                return this.posicion += avanza;
+            }
+        }
+        let tortuga= new Corredor(1);
+        let liebre = new Corredor(2);
+        while(tortuga.posicion<100 && liebre.posicion<100){
+            console.log("Tortuga: " + tortuga.correrTortuga());
+            console.log("Liebre: " +liebre.correrLiebre());
+        }
+        //Quien ganó
+        if (tortuga.posicion==liebre.posicion)
+            console.log("Es un empate");
+        else if (tortuga.posicion<liebre.posicion)
+            console.log("El ganador es: la Liebre ");
+        else if (liebre.posicion<tortuga.posicion)
+            console.log("El ganador es: la Tortuga ");
+    </script>
+</body>
+</html>
