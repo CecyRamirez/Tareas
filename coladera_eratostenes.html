@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coladera de Eratóstenes</title>
+</head>
+<body>
+    <script>
+        let arreglo = [];
+        //llenar arreglo inicializado a 1
+        for(i=1;i<1000;i++){
+            arreglo[i]=1;
+        }
+        //ciclar cada que un elemento esté en 1 
+        for(i=2;i<1000;i++){
+            //establecer a cero los elementos cuyo subíndice sea múltiplo de dicho subíndice
+            for(let j=2;(i*j)<1000;j++){
+                arreglo[i*j]=0;
+            }
+        }
+        //imprimir numeros que quedaron en 1 (verdadero)
+        for(i=1;i<1000;i++){
+            if(arreglo[i]==1){
+                console.log(i);
+            }
+        }
+    </script>
+</body>
+</html>
